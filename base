@@ -1,0 +1,16 @@
+from openai import OpenAI
+
+# chave de API
+client = OpenAI(api_key = '***SECRET KEY***')
+
+# prompt
+messages = []
+messages.append({'role':'system','content':'Você é uma professora de inglês. Responda um aluno que perguntou qual a diferença de simple past e past continuous'})
+messages.append({'role':'user','content':'Porque o meu site está fora do ar?'})
+
+
+response = client.chat.completions.create(messages=messages, model='gpt-3.5-turbo', temperature=1, n=2,)
+# resposta
+print(response.choices[0].message.content)
+print("______________________________________________")
+print(response.choices[1].message.content)
